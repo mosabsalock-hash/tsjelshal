@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تسجيل ساعاتي - نظام الوقت الفعلي</title>
 <style>
+/* نفس الأنماط السابقة - لم يتم تغييرها */
 * {
 margin: 0;
 padding: 0;
@@ -720,6 +721,7 @@ direction: ltr;
 </div>
 
 <script>
+// ==================== الدوال المساعدة ====================
 // دالة تحويل الساعات إلى نص
 function formatHoursToText(hours) {
 let totalMinutes = Math.round(hours * 60);
@@ -775,14 +777,47 @@ return true;
 return false;
 }
 
+// ==================== تحميل البيانات من localStorage بشكل آمن ====================
+function loadData() {
+try {
+let savedData = localStorage.getItem('workRecords');
+if (savedData) {
+workRecords = JSON.parse(savedData);
+// التأكد أن البيانات مصفوفة
+if (!Array.isArray(workRecords)) {
+workRecords = [];
+}
+} else {
+workRecords = [];
+}
+} catch (e) {
+console.error('خطأ في تحميل البيانات:', e);
+workRecords = [];
+}
+}
+
+// ==================== حفظ البيانات إلى localStorage بشكل آمن ====================
+function saveData() {
+try {
+localStorage.setItem('workRecords', JSON.stringify(workRecords));
+console.log('تم حفظ البيانات:', workRecords.length); // للتأكد
+} catch (e) {
+console.error('خطأ في حفظ البيانات:', e);
+alert('حدث خطأ في حفظ البيانات');
+}
+}
+
 // البيانات
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "admin123";
-let workRecords = JSON.parse(localStorage.getItem('workRecords')) || [];
+let workRecords = [];
 let timeUpdateInterval;
 let currentWorkerName = "";
 
-// تسجيل الدخول
+// تحميل البيانات عند بدء التشغيل
+loadData();
+
+// ==================== تسجيل الدخول ====================
 function login() {
 let userType = document.querySelector('input[name="userType"]:checked').value;
 let username = document.getElementById('username').value.trim();
@@ -964,14 +999,14 @@ timestamp: now.toISOString()
 };
 
 workRecords.push(newRecord);
-localStorage.setItem('workRecords', JSON.stringify(workRecords));
+saveData(); // حفظ البيانات بعد الإضافة
 
 // إظهار رسالة النجاح المنبثقة
 document.getElementById('successMessageText').textContent = 'تم تسجيل ' + formatHoursToText(hoursWorked) + ' بنجاح';
 document.getElementById('successPopup').style.display = 'flex';
 }
 
-// وظائف المدير
+// ==================== وظائف المدير ====================
 function displayAdminRecords() {
 let searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
 let workerFilter = document.getElementById('workerFilter')?.value || 'all';
@@ -1045,8 +1080,8 @@ newRecords.push(workRecords[i]);
 }
 }
 workRecords = newRecords;
-localStorage.setItem('workRecords', JSON.stringify(workRecords));
-displayAdminRecords();
+saveData(); // حفظ البيانات بعد الحذف
+displayAdminRecords(); // تحديث العرض
 }
 }
 
@@ -1064,9 +1099,9 @@ document.getElementById('confirmDialog').style.display = 'none';
 
 function deleteAllRecords() {
 workRecords = [];
-localStorage.setItem('workRecords', JSON.stringify(workRecords));
+saveData(); // حفظ البيانات بعد الحذف الكلي
 hideDeleteAllConfirm();
-displayAdminRecords();
+displayAdminRecords(); // تحديث العرض
 setTimeout(() => {
 alert('✅ تم حذف جميع السجلات بنجاح');
 }, 100);
