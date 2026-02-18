@@ -75,7 +75,7 @@ gap: 5px;
 cursor: pointer;
 }
 
-/* شاشة المدير (Admin) */
+/* شاشة المدير */
 .admin-screen, .worker-screen {
 display: none;
 }
@@ -127,3 +127,948 @@ box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
 .worker-simple h2 {
+color: #2c3e50;
+text-align: center;
+margin-bottom: 30px;
+font-size: 2em;
+}
+
+.worker-info {
+background: #e3f2fd;
+padding: 20px;
+border-radius: 15px;
+margin-bottom: 25px;
+text-align: center;
+border: 2px solid #2196f3;
+}
+
+.worker-info .label {
+color: #0d47a1;
+font-size: 1.1em;
+margin-bottom: 5px;
+}
+
+.worker-info .name {
+color: #1565c0;
+font-size: 2em;
+font-weight: bold;
+}
+
+.current-time {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 20px;
+border-radius: 15px;
+text-align: center;
+margin-bottom: 25px;
+}
+
+.current-time .time-label {
+font-size: 1.1em;
+opacity: 0.9;
+margin-bottom: 5px;
+}
+
+.current-time .time-value {
+font-size: 2.5em;
+font-weight: bold;
+font-family: monospace;
+direction: ltr;
+}
+
+.current-time .date-value {
+font-size: 1.2em;
+margin-top: 5px;
+}
+
+.time-input-group {
+background: #f8f9fa;
+padding: 20px;
+border-radius: 15px;
+margin-bottom: 20px;
+}
+
+.time-input-group label {
+display: block;
+margin-bottom: 10px;
+color: #2c3e50;
+font-weight: bold;
+font-size: 1.1em;
+}
+
+.time-input-group input {
+width: 100%;
+padding: 15px;
+border: 2px solid #e0e0e0;
+border-radius: 10px;
+font-size: 1.1em;
+font-family: monospace;
+direction: ltr;
+}
+
+.time-input-group input:focus {
+outline: none;
+border-color: #667eea;
+box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.time-display {
+background: #e8f5e9;
+padding: 20px;
+border-radius: 15px;
+margin: 20px 0;
+text-align: center;
+}
+
+.time-display .label {
+color: #2e7d32;
+font-size: 1.1em;
+margin-bottom: 5px;
+}
+
+.time-display .value {
+color: #1b5e20;
+font-size: 2em;
+font-weight: bold;
+}
+
+.warning-message {
+background: #fff3e0;
+color: #e65100;
+padding: 15px;
+border-radius: 10px;
+margin: 15px 0;
+text-align: center;
+font-weight: bold;
+}
+
+.duplicate-message {
+background: #ffebee;
+color: #c62828;
+padding: 15px;
+border-radius: 10px;
+margin: 15px 0;
+text-align: center;
+font-weight: bold;
+border: 2px solid #ef5350;
+}
+
+.worker-simple input, .worker-simple textarea {
+width: 100%;
+padding: 12px;
+margin: 10px 0;
+border: 2px solid #e0e0e0;
+border-radius: 10px;
+font-size: 1em;
+}
+
+.worker-simple button {
+width: 100%;
+padding: 15px;
+background: #27ae60;
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 1.1em;
+font-weight: bold;
+cursor: pointer;
+margin-top: 20px;
+transition: all 0.3s;
+}
+
+.worker-simple button:hover:not(:disabled) {
+background: #219a52;
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+}
+
+.worker-simple button:disabled {
+background: #b0bec5;
+cursor: not-allowed;
+opacity: 0.6;
+}
+
+.success-message {
+background: #27ae60;
+color: white;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+margin: 10px 0;
+display: none;
+font-weight: bold;
+}
+
+/* إحصائيات المدير */
+.stats-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+margin-bottom: 30px;
+}
+
+.stat-card {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 20px;
+border-radius: 15px;
+text-align: center;
+}
+
+.filters {
+display: flex;
+gap: 15px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+align-items: center;
+}
+
+.search-box, .filter-select {
+padding: 12px;
+border: 2px solid #e0e0e0;
+border-radius: 10px;
+font-size: 1em;
+flex: 1;
+min-width: 200px;
+}
+
+.action-buttons-group {
+display: flex;
+gap: 10px;
+margin-right: auto;
+}
+
+.action-btn {
+padding: 12px 20px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+font-size: 0.95em;
+font-weight: 600;
+transition: all 0.3s;
+}
+
+.export-btn {
+background: #27ae60;
+color: white;
+}
+.export-btn:hover { background: #219a52; }
+
+.delete-all-btn {
+background: #e74c3c;
+color: white;
+}
+.delete-all-btn:hover { background: #c0392b; }
+
+.table-container {
+overflow-x: auto;
+background: white;
+border-radius: 15px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+margin-top: 20px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th {
+background: #2c3e50;
+color: white;
+padding: 15px;
+font-size: 0.95em;
+}
+
+td {
+padding: 15px;
+text-align: center;
+border-bottom: 1px solid #ecf0f1;
+}
+
+tr:hover {
+background: #f8f9fa;
+}
+
+.delete-record-btn {
+background: #e74c3c;
+color: white;
+border: none;
+padding: 5px 15px;
+border-radius: 5px;
+cursor: pointer;
+font-size: 0.9em;
+}
+
+.delete-record-btn:hover {
+background: #c0392b;
+}
+
+.confirm-dialog {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+display: none;
+}
+
+.confirm-content {
+background: white;
+padding: 30px;
+border-radius: 15px;
+max-width: 400px;
+text-align: center;
+}
+
+.confirm-content h3 {
+color: #2c3e50;
+margin-bottom: 15px;
+}
+
+.confirm-content p {
+color: #7f8c8d;
+margin-bottom: 25px;
+}
+
+.confirm-buttons {
+display: flex;
+gap: 10px;
+justify-content: center;
+}
+
+.confirm-btn {
+padding: 10px 30px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 1em;
+}
+
+.confirm-yes {
+background: #e74c3c;
+color: white;
+}
+
+.confirm-no {
+background: #95a5a6;
+color: white;
+}
+
+.time-details {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin: 20px 0;
+}
+
+.time-box {
+background: #f8f9fa;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+}
+
+.time-box .title {
+color: #7f8c8d;
+font-size: 0.9em;
+margin-bottom: 5px;
+}
+
+.time-box .time {
+color: #2c3e50;
+font-size: 1.3em;
+font-weight: bold;
+font-family: monospace;
+direction: ltr;
+}
+</style>
+</head>
+<body>
+<!-- شاشة تسجيل الدخول -->
+<div id="loginScreen" class="login-screen">
+<h2>🔐 تسجيل الدخول</h2>
+<div class="user-type">
+<label>
+<input type="radio" name="userType" value="admin" checked> مدير
+</label>
+<label>
+<input type="radio" name="userType" value="worker"> عامل
+</label>
+</div>
+<input type="text" id="username" placeholder="اسم المستخدم">
+<input type="password" id="password" placeholder="كلمة المرور">
+<button onclick="login()">دخول</button>
+</div>
+
+<!-- شاشة المدير -->
+<div id="adminScreen" class="admin-screen">
+<div class="container">
+<div class="header">
+<h1>👑 تسجيل ساعاتي - لوحة التحكم</h1>
+<button class="logout-btn" onclick="logout()">تسجيل خروج</button>
+</div>
+
+<div class="main-content">
+<div class="stats-container">
+<div class="stat-card">
+<h3>إجمالي العمال</h3>
+<div class="number" id="totalWorkers">0</div>
+</div>
+<div class="stat-card">
+<h3>إجمالي الساعات</h3>
+<div class="number" id="totalHours">0</div>
+</div>
+<div class="stat-card">
+<h3>متوسط الساعات</h3>
+<div class="number" id="avgHours">0</div>
+</div>
+<div class="stat-card">
+<h3>عدد السجلات</h3>
+<div class="number" id="totalRecords">0</div>
+</div>
+</div>
+
+<div class="filters">
+<input type="text" id="searchInput" class="search-box" placeholder="🔍 بحث باسم العامل أو المهمة...">
+<select id="workerFilter" class="filter-select">
+<option value="all">جميع العمال</option>
+</select>
+<div class="action-buttons-group">
+<button class="action-btn export-btn" onclick="exportToExcel()">📥 تصدير Excel</button>
+<button class="action-btn delete-all-btn" onclick="showDeleteAllConfirm()">🗑️ حذف الكل</button>
+</div>
+</div>
+
+<div class="table-container">
+<table id="workTable">
+<thead>
+<tr>
+<th>#</th>
+<th>اسم العامل</th>
+<th>المهمة</th>
+<th>التاريخ</th>
+<th>وقت البداية</th>
+<th>وقت النهاية</th>
+<th>عدد الساعات</th>
+<th>ملاحظات</th>
+<th>الإجراءات</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+
+<div style="margin-top: 20px; color: #7f8c8d; text-align: left;">
+<small>عدد السجلات المعروضة: <span id="displayedRecords">0</span></small>
+</div>
+</div>
+</div>
+</div>
+
+<!-- شاشة العامل -->
+<div id="workerScreen" class="worker-screen">
+<div class="worker-simple">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h2>⏰ تسجيل ساعاتي</h2>
+<button class="logout-btn" onclick="logout()" style="width: auto; padding: 8px 15px;">خروج</button>
+</div>
+
+<div id="successMessage" class="success-message">✅ تم تسجيل الساعات بنجاح</div>
+
+<div class="worker-info">
+<div class="label">👤 اسم العامل</div>
+<div class="name" id="displayWorkerName"></div>
+</div>
+
+<div class="current-time">
+<div class="time-label">الوقت الحالي (وقت النهاية)</div>
+<div class="time-value" id="currentTimeDisplay">--:--:--</div>
+<div class="date-value" id="currentDateDisplay"></div>
+</div>
+
+<div id="duplicateMessage" class="duplicate-message" style="display: none;">
+⚠️ لقد سجلت ساعاتك مسبقاً اليوم
+</div>
+
+<form id="workerForm" onsubmit="return false;">
+<input type="hidden" id="workerName">
+<input type="text" id="workerJob" placeholder="المهمة" required>
+
+<div class="time-input-group">
+<label>⏱️ وقت بداية العمل</label>
+<input type="time" id="startTime" required>
+</div>
+
+<div class="time-details">
+<div class="time-box">
+<div class="title">وقت البداية</div>
+<div class="time" id="displayStartTime">--:--</div>
+</div>
+<div class="time-box">
+<div class="title">وقت النهاية (الآن)</div>
+<div class="time" id="displayEndTime">--:--</div>
+</div>
+</div>
+
+<div class="time-display">
+<div class="label">إجمالي وقت العمل</div>
+<div class="value" id="totalHoursDisplay">0 ساعة</div>
+</div>
+
+<div id="timeWarning" class="warning-message" style="display: none;">
+⚠️ وقت البداية لا يمكن أن يكون أكبر من الوقت الحالي
+</div>
+
+<textarea id="notes" placeholder="ملاحظات (اختياري)" rows="3"></textarea>
+
+<button type="button" id="submitBtn" onclick="submitWorkerHours()">✅ تسجيل الساعات</button>
+</form>
+
+<div style="margin-top: 20px; text-align: center; color: #7f8c8d; font-size: 0.9em;">
+<p>⏰ يتم احتساب الساعات تلقائياً من وقت البداية حتى الآن</p>
+</div>
+</div>
+</div>
+
+<!-- نافذة تأكيد حذف الكل -->
+<div id="confirmDialog" class="confirm-dialog">
+<div class="confirm-content">
+<h3>🗑️ تأكيد حذف الكل</h3>
+<p>هل أنت متأكد من حذف جميع سجلات ساعات العمل؟</p>
+<p style="color: #e74c3c; font-weight: bold;">هذا الإجراء لا يمكن التراجع عنه!</p>
+<div class="confirm-buttons">
+<button class="confirm-btn confirm-yes" onclick="deleteAllRecords()">نعم، حذف الكل</button>
+<button class="confirm-btn confirm-no" onclick="hideDeleteAllConfirm()">إلغاء</button>
+</div>
+</div>
+</div>
+
+<script>
+// دالة تحويل الساعات إلى نص
+function formatHoursToText(hours) {
+let totalMinutes = Math.round(hours * 60);
+let h = Math.floor(totalMinutes / 60);
+let m = totalMinutes % 60;
+
+if (h === 0) return m + ' دقيقة';
+if (m === 0) return h + ' ساعة';
+return h + ' ساعة و ' + m + ' دقيقة';
+}
+
+// التحقق من التسجيل المكرر
+function checkDuplicateToday(workerName) {
+let today = new Date().toISOString().split('T')[0];
+for (let i = 0; i < workRecords.length; i++) {
+if (workRecords[i].workerName === workerName && workRecords[i].date === today) {
+return true;
+}
+}
+return false;
+}
+
+// البيانات
+const ADMIN_USERNAME = "admin";
+const ADMIN_PASSWORD = "admin123";
+let workRecords = JSON.parse(localStorage.getItem('workRecords')) || [];
+let timeUpdateInterval;
+let currentWorkerName = "";
+
+// تسجيل الدخول
+function login() {
+let userType = document.querySelector('input[name="userType"]:checked').value;
+let username = document.getElementById('username').value.trim();
+let password = document.getElementById('password').value;
+
+if (userType === 'admin') {
+if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+document.getElementById('loginScreen').style.display = 'none';
+document.getElementById('adminScreen').style.display = 'block';
+document.getElementById('workerScreen').style.display = 'none';
+displayAdminRecords();
+updateAdminStats();
+if (timeUpdateInterval) clearInterval(timeUpdateInterval);
+} else {
+alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+}
+} else {
+if (username && password) {
+currentWorkerName = username;
+document.getElementById('loginScreen').style.display = 'none';
+document.getElementById('adminScreen').style.display = 'none';
+document.getElementById('workerScreen').style.display = 'block';
+
+document.getElementById('displayWorkerName').textContent = currentWorkerName;
+document.getElementById('workerName').value = currentWorkerName;
+
+startTimeUpdates();
+setDefaultStartTime();
+checkAndShowDuplicateMessage();
+} else {
+alert('❌ الرجاء إدخال اسم المستخدم وكلمة المرور');
+}
+}
+}
+
+// تسجيل الخروج
+function logout() {
+document.getElementById('loginScreen').style.display = 'block';
+document.getElementById('adminScreen').style.display = 'none';
+document.getElementById('workerScreen').style.display = 'none';
+document.getElementById('username').value = '';
+document.getElementById('password').value = '';
+hideDeleteAllConfirm();
+if (timeUpdateInterval) clearInterval(timeUpdateInterval);
+currentWorkerName = "";
+}
+
+// التحقق من التكرار وإظهار الرسالة
+function checkAndShowDuplicateMessage() {
+let isDuplicate = checkDuplicateToday(currentWorkerName);
+let duplicateMsg = document.getElementById('duplicateMessage');
+let submitBtn = document.getElementById('submitBtn');
+
+if (isDuplicate) {
+duplicateMsg.style.display = 'block';
+submitBtn.disabled = true;
+} else {
+duplicateMsg.style.display = 'none';
+submitBtn.disabled = false;
+}
+}
+
+// تحديث الوقت
+function startTimeUpdates() {
+timeUpdateInterval = setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
+}
+
+function updateCurrentTime() {
+let now = new Date();
+let hours = now.getHours().toString().padStart(2, '0');
+let minutes = now.getMinutes().toString().padStart(2, '0');
+let seconds = now.getSeconds().toString().padStart(2, '0');
+let timeString = hours + ':' + minutes + ':' + seconds;
+
+let dateString = now.toLocaleDateString('ar-EG', {
+weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+});
+
+document.getElementById('currentTimeDisplay').textContent = timeString;
+document.getElementById('currentDateDisplay').textContent = dateString;
+document.getElementById('displayEndTime').textContent = hours + ':' + minutes;
+
+calculateHours();
+}
+
+function setDefaultStartTime() {
+let now = new Date();
+now.setHours(now.getHours() - 1);
+let hours = now.getHours().toString().padStart(2, '0');
+let minutes = now.getMinutes().toString().padStart(2, '0');
+let defaultTime = hours + ':' + minutes;
+
+document.getElementById('startTime').value = defaultTime;
+document.getElementById('displayStartTime').textContent = defaultTime;
+calculateHours();
+}
+
+function calculateHours() {
+let startTimeInput = document.getElementById('startTime').value;
+if (!startTimeInput) {
+document.getElementById('totalHoursDisplay').textContent = '0 ساعة';
+return;
+}
+
+let now = new Date();
+let startParts = startTimeInput.split(':');
+let startHours = parseInt(startParts[0]);
+let startMinutes = parseInt(startParts[1]);
+
+let startDate = new Date(now);
+startDate.setHours(startHours, startMinutes, 0, 0);
+
+if (startDate > now) {
+document.getElementById('timeWarning').style.display = 'block';
+document.getElementById('submitBtn').disabled = true;
+document.getElementById('totalHoursDisplay').textContent = '⚠️ وقت بداية غير صحيح';
+return;
+}
+
+document.getElementById('timeWarning').style.display = 'none';
+
+if (checkDuplicateToday(currentWorkerName)) {
+document.getElementById('submitBtn').disabled = true;
+} else {
+document.getElementById('submitBtn').disabled = false;
+}
+
+let diffMs = now - startDate;
+let diffHours = diffMs / (1000 * 60 * 60);
+
+document.getElementById('totalHoursDisplay').textContent = formatHoursToText(diffHours);
+document.getElementById('displayStartTime').textContent = startTimeInput;
+}
+
+// تسجيل ساعات العمل
+function submitWorkerHours() {
+let workerName = currentWorkerName;
+let workerJob = document.getElementById('workerJob').value.trim();
+let startTime = document.getElementById('startTime').value;
+let notes = document.getElementById('notes').value.trim();
+
+if (!workerJob || !startTime) {
+alert('❌ الرجاء ملء جميع الحقول المطلوبة');
+return;
+}
+
+if (checkDuplicateToday(workerName)) {
+alert('❌ لقد سجلت مسبقاً اليوم');
+checkAndShowDuplicateMessage();
+return;
+}
+
+let now = new Date();
+let startParts = startTime.split(':');
+let startHours = parseInt(startParts[0]);
+let startMinutes = parseInt(startParts[1]);
+let startDate = new Date(now);
+startDate.setHours(startHours, startMinutes, 0, 0);
+
+if (startDate > now) {
+alert('❌ وقت البداية لا يمكن أن يكون أكبر من الوقت الحالي');
+return;
+}
+
+let diffMs = now - startDate;
+let hoursWorked = diffMs / (1000 * 60 * 60);
+
+let newRecord = {
+id: Date.now(),
+workerName: workerName,
+job: workerJob,
+date: now.toISOString().split('T')[0],
+startTime: startTime,
+endTime: now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0'),
+hours: hoursWorked,
+hoursText: formatHoursToText(hoursWorked),
+notes: notes,
+timestamp: now.toISOString()
+};
+
+workRecords.push(newRecord);
+localStorage.setItem('workRecords', JSON.stringify(workRecords));
+
+let successMsg = document.getElementById('successMessage');
+successMsg.style.display = 'block';
+successMsg.textContent = '✅ تم تسجيل ' + formatHoursToText(hoursWorked) + ' بنجاح';
+
+document.getElementById('workerForm').reset();
+document.getElementById('workerJob').value = '';
+setDefaultStartTime();
+checkAndShowDuplicateMessage();
+
+setTimeout(() => {
+successMsg.style.display = 'none';
+}, 3000);
+}
+
+// وظائف المدير
+function displayAdminRecords() {
+let searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+let workerFilter = document.getElementById('workerFilter')?.value || 'all';
+
+let filteredRecords = [];
+for (let i = 0; i < workRecords.length; i++) {
+filteredRecords.push(workRecords[i]);
+}
+
+if (searchTerm) {
+let temp = [];
+for (let i = 0; i < filteredRecords.length; i++) {
+let r = filteredRecords[i];
+if (r.workerName.toLowerCase().includes(searchTerm) || r.job.toLowerCase().includes(searchTerm)) {
+temp.push(r);
+}
+}
+filteredRecords = temp;
+}
+
+if (workerFilter !== 'all') {
+let temp = [];
+for (let i = 0; i < filteredRecords.length; i++) {
+if (filteredRecords[i].workerName === workerFilter) {
+temp.push(filteredRecords[i]);
+}
+}
+filteredRecords = temp;
+}
+
+filteredRecords.sort(function(a, b) {
+return new Date(b.date) - new Date(a.date);
+});
+
+let tbody = document.getElementById('tableBody');
+if (!tbody) return;
+
+tbody.innerHTML = '';
+
+if (filteredRecords.length === 0) {
+tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 50px; color: #7f8c8d;">📭 لا توجد بيانات لعرضها</td></tr>';
+} else {
+for (let i = 0; i < filteredRecords.length; i++) {
+let r = filteredRecords[i];
+let row = tbody.insertRow();
+row.innerHTML = `
+<td>${i + 1}</td>
+<td><strong>${r.workerName}</strong></td>
+<td>${r.job}</td>
+<td>${new Date(r.date).toLocaleDateString('ar-EG')}</td>
+<td>${r.startTime || '--:--'}</td>
+<td>${r.endTime || '--:--'}</td>
+<td>${r.hoursText || formatHoursToText(r.hours)}</td>
+<td>${r.notes || '-'}</td>
+<td><button class="delete-record-btn" onclick="adminDeleteRecord(${r.id})">🗑️ حذف</button></td>
+`;
+}
+}
+
+document.getElementById('displayedRecords').textContent = filteredRecords.length;
+updateWorkerFilter();
+updateAdminStats();
+}
+
+function adminDeleteRecord(id) {
+if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+let newRecords = [];
+for (let i = 0; i < workRecords.length; i++) {
+if (workRecords[i].id !== id) {
+newRecords.push(workRecords[i]);
+}
+}
+workRecords = newRecords;
+localStorage.setItem('workRecords', JSON.stringify(workRecords));
+displayAdminRecords();
+}
+}
+
+function showDeleteAllConfirm() {
+if (workRecords.length === 0) {
+alert('لا توجد بيانات للحذف');
+return;
+}
+document.getElementById('confirmDialog').style.display = 'flex';
+}
+
+function hideDeleteAllConfirm() {
+document.getElementById('confirmDialog').style.display = 'none';
+}
+
+function deleteAllRecords() {
+workRecords = [];
+localStorage.setItem('workRecords', JSON.stringify(workRecords));
+hideDeleteAllConfirm();
+displayAdminRecords();
+setTimeout(() => {
+alert('✅ تم حذف جميع السجلات بنجاح');
+}, 100);
+}
+
+function updateAdminStats() {
+let workers = [];
+let totalHours = 0;
+for (let i = 0; i < workRecords.length; i++) {
+if (!workers.includes(workRecords[i].workerName)) {
+workers.push(workRecords[i].workerName);
+}
+totalHours += workRecords[i].hours;
+}
+
+document.getElementById('totalWorkers').textContent = workers.length;
+document.getElementById('totalHours').textContent = totalHours.toFixed(1);
+document.getElementById('avgHours').textContent = workRecords.length > 0 ? (totalHours / workRecords.length).toFixed(1) : 0;
+document.getElementById('totalRecords').textContent = workRecords.length;
+}
+
+function updateWorkerFilter() {
+let workers = [];
+for (let i = 0; i < workRecords.length; i++) {
+if (!workers.includes(workRecords[i].workerName)) {
+workers.push(workRecords[i].workerName);
+}
+}
+
+let filterSelect = document.getElementById('workerFilter');
+if (!filterSelect) return;
+
+let currentValue = filterSelect.value;
+filterSelect.innerHTML = '<option value="all">جميع العمال</option>';
+
+workers.sort();
+for (let i = 0; i < workers.length; i++) {
+let option = document.createElement('option');
+option.value = workers[i];
+option.textContent = workers[i];
+filterSelect.appendChild(option);
+}
+
+if (currentValue && workers.includes(currentValue)) {
+filterSelect.value = currentValue;
+}
+}
+
+function exportToExcel() {
+if (workRecords.length === 0) {
+alert('لا توجد بيانات للتصدير');
+return;
+}
+
+let text = 'الاسم,المهمة,التاريخ,وقت البداية,وقت النهاية,الساعات,ملاحظات\n';
+
+for (let i = 0; i < workRecords.length; i++) {
+let r = workRecords[i];
+text += r.workerName + ',' + r.job + ',' + r.date + ',' + (r.startTime || '') + ',' +
+(r.endTime || '') + ',"' + (r.hoursText || formatHoursToText(r.hours)) + '","' + (r.notes || '') + '"\n';
+}
+
+let blob = new Blob(['\uFEFF' + text], { type: 'text/csv;charset=utf-8;' });
+let link = document.createElement('a');
+link.href = URL.createObjectURL(blob);
+link.download = 'تقرير_ساعات_العمل_' + new Date().toISOString().split('T')[0] + '.csv';
+link.click();
+alert('✅ تم تصدير ' + workRecords.length + ' سجل بنجاح');
+}
+
+// إضافة مستمعي الأحداث
+function setupEventListeners() {
+if (document.getElementById('searchInput')) {
+document.getElementById('searchInput').addEventListener('input', displayAdminRecords);
+}
+if (document.getElementById('workerFilter')) {
+document.getElementById('workerFilter').addEventListener('change', displayAdminRecords);
+}
+document.getElementById('startTime')?.addEventListener('change', calculateHours);
+}
+
+// تهيئة الصفحة
+window.onload = function() {
+document.getElementById('loginScreen').style.display = 'block';
+document.getElementById('adminScreen').style.display = 'none';
+document.getElementById('workerScreen').style.display = 'none';
+setupEventListeners();
+
+window.onclick = function(event) {
+let dialog = document.getElementById('confirmDialog');
+if (event.target === dialog) {
+hideDeleteAllConfirm();
+}
+};
+}
+</script>
+</body>
+</html>
